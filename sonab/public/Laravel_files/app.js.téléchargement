@@ -1,0 +1,11 @@
+import '/resources/js/bootstrap.js';
+import { createApp } from '/node_modules/.vite/deps/vue_dist_vue__esm-bundler__js.js?v=af3d562d';
+import AddToCart from '/resources/js/components/AddToCart.vue';
+
+
+
+const app = createApp();
+
+app.component('AddToCart', AddToCart)
+
+app.mount('#app');
