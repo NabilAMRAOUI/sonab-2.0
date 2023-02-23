@@ -26,18 +26,18 @@
                   <div class="flex items-center justify-between px-4 pt-4">
                       
                       <div class="bg-gray-600 py-1.5 px-6 rounded-full">
-                          <p tabindex="0" class="focus:outline-none text-xs text-white">{{ $product->price }}</p>
+                          <p tabindex="0" class="focus:outline-none text-xs text-white">{{ $product->formatted_price }}</p>
                       </div>
                   </div>
-                  <div class="p-4">
+                    <div class="p-4">
                       <div class="flex items-center">
                           <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">{{ $product->name }}</h2>
                           
                       </div>
                       <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{ $product->description }}</p>
                       
-                      <add-to-cart />
-                  </div>
+                      <add-to-cart :product-id="{{ $product->id }}" />
+                    </div>
                 </div>
             </div>
           @endforeach

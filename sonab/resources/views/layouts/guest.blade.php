@@ -12,6 +12,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     </head>
     <body id="app" class="font-sans antialiased">
         <div class="min-h-screen bg-transparent">
@@ -22,7 +23,7 @@
                 {{ $slot }}
             </main>
             <footer>
-            @include('layouts.footer')
+                @include('layouts.footer')
             </footer>
         </div>
     </body>
