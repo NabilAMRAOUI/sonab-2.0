@@ -1,11 +1,11 @@
-<x-app-layout>
+<x-guest-layout>
 
   <x-slot name='header'>
       Qui sommes nous?
   </x-slot>
 
-  <section class="pt-10 overflow-hidden bg-gray-50 md:pt-0 sm:pt-16 2xl:pt-16">
-    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+  <section class="pt-10  overflow-hidden bg-gray-50 md:pt-0 sm:pt-16 2xl:pt-16">
+    <div class="px-4 py-10 mx-auto sm:px-6 lg:px-8 max-w-7xl">
       <div class="grid items-center grid-cols-1 md:grid-cols-2">
         <div>
           <h2 class="text-3xl font-bold leading-tight text-black sm:text-5xl lg:text-5xl">Ravies 👋 <br class="block sm:hidden" />de vous rencontrer</h2>
@@ -41,4 +41,4 @@
 
         
     
-</x-app-layout>
+</x-guest-layout>

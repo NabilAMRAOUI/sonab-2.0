@@ -1,19 +1,19 @@
 <x-guest-layout>
   <div class="all">
     <body>
-      <main>
+      <main class="bg-home bg-cover">
       
       <div class="relative px-6 lg:px-8">
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div class="relative rounded-full py-1 px-3 text-sm leading-6 text-black ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div class="relative rounded-full py-1 px-3 text-ml leading-6 text-black ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Pour toute demande personnalisé laissez nous un message. <a href="/contact" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Nous contacter <span aria-hidden="true">&rarr;</span></a>
             </div>
           </div>
          
           <div class="text-center">
-            <h1 class="text-4xl font-bold tracking-tight text-black sm:text-6xl">Sonab-Events</h1>
-            <p class="mt-6 text-lg leading-8 text-black">Vous célebrez, On s'occupe de tout!</p>
+            <h1 class="font-dancing font-bold text-black sm:text-9xl">Sonab-Events</h1>
+            <p class="mt-6 text-4xl leading-8 text-black">Vous célebrez, On s'occupe de tout!</p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
               <a href="/products" class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Notre boutique en ligne</a>
               <a href="/A-propos" class="text-base font-semibold leading-7 text-gray-900">En savoir plus <span aria-hidden="true">→</span></a>
@@ -40,11 +40,3 @@
 
 </x-guest-layout>
 
-<style scoped>
-  .all{
-    background-image: url(img/anniversaire.jpg);
-    background-size: cover;
-    background-position: right;
-  }
-  
-</style>

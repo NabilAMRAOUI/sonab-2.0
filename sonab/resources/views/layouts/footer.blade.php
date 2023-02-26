@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
-        <img src="img/logo.png" class="mr-5 bac sm:h-9" alt="logo" />
+        <img src="img/logo.png" class="mr-5 bac sm:h-20 " alt="logo" />
           <p class="max-w-xs mt-4 text-sm text-gray-600">
             Sonab-event's votre site pour personnaliser vos anniversaires.
           </p>

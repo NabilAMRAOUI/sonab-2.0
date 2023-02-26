@@ -6,18 +6,28 @@
 </template>
 
 <script setup>
-    
-    const productId = defineProps (['productId']); 
+    import { inject } from 'vue';
+    import useProduct from '../composables/products';
+    import emitter from 'tiny-emitter/instance';
+
+    const { add } = useProduct();
+    const productId = defineProps(['productId']); 
+    const toast = inject('toast');
+
     const AddToCart = async() => {
         await axios.get('/sanctum/csrf-cookie');
         await axios.get('/api/user')
-            .then(async(res) => {
-                let response = await axios.post('/api/products', {
-                    productId: productId
-                })
-                console.log(response);
-            })
-            .catch(err => console.log(err));
         
-    }
+        .then(async(res) => {
+           let cartCount = await add(productId);
+           emitter.emit('cartCountUpdated', cartCount);
+           toast.success('produit ajouté au panier');
+
+        })
+        .catch(() => {
+            toast.error('merci de vous connecter pour ajouter un produit');
+        });
+    }   
+    
+    
 </script> 

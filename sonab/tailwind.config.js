@@ -13,9 +13,12 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                dancing: ['Dancing Script'],
+                
             },
+        
             backgroundImage: {
-                'home' : "url('/img/anniversaire.jpg')",
+                'home' : "url('/public/img/anniversaire.jpg')",
             }
         },
     },

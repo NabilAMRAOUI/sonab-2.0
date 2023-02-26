@@ -1,8 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.all{
-    background-image: url(/sonab/public/img/anniversaire.jpg);
-}

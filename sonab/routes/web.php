@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealisationController;
+use App\Http\Controllers\ShoppingCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ Route::get('/', function () {
         
     ]);
 })->name('home');
+
+Route::get('/shoppingCart',ShoppingCartController::class)
+->name('cart.index');
 
 Route::get('/products', [ProductController::class,'index'])->name('products.index');
 Route::get('/A-propos',[AboutController::class,'index'])->name('A-propos.index');
