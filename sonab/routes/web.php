@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\StripeCheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ Route::get('/', function () {
         
     ]);
 })->name('home');
+
+Route::get('/checkout',[StripeCheckoutController::class,'create']);
+Route::post('/PaymentIntent',[StripeCheckoutController::class,'PaymentIntent']);
 
 Route::get('/shoppingCart',ShoppingCartController::class)
 ->name('cart.index');

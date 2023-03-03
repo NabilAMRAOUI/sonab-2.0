@@ -1,12 +1,12 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-black">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <div class="mb-4 text-sm text-black text-center py-10">
+        {{ __('mot de passe oulié? Pas de soucis. Laissez nous votre addresse email et nous vous renverrons email avec un lien permettant de réinitailiser votre mot de passe.') }}
     </div>
 
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4" :status="session('status')"  />
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.email') }}" class="flex flex-col justify-center items-center py-10">
         @csrf
 
         <!-- Email Address -->

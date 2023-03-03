@@ -1,4 +1,5 @@
 <x-guest-layout>
+  
   <div class="all">
     <body>
       <main class="bg-home bg-cover">

@@ -59,7 +59,7 @@
                     </table>
                     <hr class="pb-6 mt-6">
                     <div class="my-4 mt-6 -mx-2 lg:flex justify-end">
-                        <div class="lg:px-2 lg:w-1/2">
+                        <!-- <div class="lg:px-2 lg:w-1/2">
                             <div class="p-4 bg-gray-100 rounded-full">
                                 <h1 class="ml-2 font-bold uppercase">Coupon Code</h1>
                             </div>
@@ -92,7 +92,7 @@
                                     box below</p>
                                 <textarea class="w-full h-24 p-2 bg-gray-100 rounded"></textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="lg:px-2 lg:w-1/2">
                             <div class="p-4 bg-gray-100 rounded-full">
                                 <h1 class="ml-2 font-bold uppercase">Détails de la commande</h1>
@@ -100,15 +100,15 @@
                             <div class="p-4">
                                 <p class="mb-6 italic">Shipping and additionnal costs are calculated based on values you
                                     have entered</p>
-                                <div class="flex justify-between border-b">
+                                <!-- <div class="flex justify-between border-b">
                                     <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                                         Subtotal
                                     </div>
                                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                                         148,827.53€
                                     </div>
-                                </div>
-                                <div class="flex justify-between pt-4 border-b">
+                                </div> -->
+                                <!-- <div class="flex justify-between pt-4 border-b">
                                     <div class="flex lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-gray-800">
                                         <form action="" method="POST">
                                             <button type="submit" class="mr-2 mt-1 lg:mt-2">
@@ -125,8 +125,8 @@
                                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-700">
                                         -133,944.77€
                                     </div>
-                                </div>
-                                <div class="flex justify-between pt-4 border-b">
+                                </div> -->
+                                <!-- <div class="flex justify-between pt-4 border-b">
                                     <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                                         New Subtotal
                                     </div>
@@ -141,13 +141,13 @@
                                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                                         2,976.55€
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="flex justify-between pt-4 border-b">
                                     <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                                         Total
                                     </div>
                                     <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                        <!-- {{ cartTotal }} -->
+                                        {{ cartTotal }} 
                                     </div>
                                 </div>
                                 <a href="/checkout">
@@ -171,18 +171,49 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted , computed } from 'vue';
 import useProduct from '../composables/products';
+import { priceFormat } from '../helpers'
+import emitter from 'tiny-emitter/instance';
 
 const {
     products,
-    getProducts
+    getproducts,
+    increaseQuantity,
+    decreaseQuantity,
+    destroyProduct,
+    cartCount
 
 } = useProduct();
 
+const cartTotal = computed(() => {
+    let price = Object.values(products.value)
+    .reduce((acc, product) => acc += product.price * product.quantity, 0);
+
+    return priceFormat(price);
+});
+
+const increase = async(id) => {
+    await increaseQuantity(id);
+    await getproducts();
+    emitter.emit('cartCountUpdated', cartCount.value);
+}
+const decrease = async(id) => {
+    await decreaseQuantity(id);
+    await getproducts();
+    emitter.emit('cartCountUpdated', cartCount.value);
+
+}
+const destroy = async(id) => {
+    await destroyProduct(id);
+    await getproducts();
+    emitter.emit('cartCountUpdated', cartCount.value);
+
+}
+
 onMounted(async () => {
 
-  const products = await getProducts();
+  const products = await getproducts();
     console.log(products);
 })
 
