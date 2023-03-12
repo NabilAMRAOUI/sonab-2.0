@@ -27,7 +27,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/checkout',[StripeCheckoutController::class,'create']);
-Route::post('/PaymentIntent',[StripeCheckoutController::class,'PaymentIntent']);
+Route::post('/paymentIntent',[StripeCheckoutController::class,'paymentIntent']);
 
 Route::get('/shoppingCart',ShoppingCartController::class)
 ->name('cart.index');
