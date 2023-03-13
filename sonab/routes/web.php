@@ -19,26 +19,34 @@ use App\Http\Controllers\StripeCheckoutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/** Route pour la page d'acceuil  */
 Route::get('/', function () {
     return view('home', [
         
     ]);
 })->name('home');
 
+
+/** Routes nécessaires a stripe api */
 Route::get('/checkout',[StripeCheckoutController::class,'create']);
 Route::post('/paymentIntent',[StripeCheckoutController::class,'paymentIntent']);
 
+/** Route pour le panier */
 Route::get('/shoppingCart',ShoppingCartController::class)
 ->name('cart.index');
 
+/** Route pour la page produit */
 Route::get('/products', [ProductController::class,'index'])->name('products.index');
+/** Route pour la page a-propos */
 Route::get('/A-propos',[AboutController::class,'index'])->name('A-propos.index');
+/** Route pour la page contact */
 Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+/** Route pour la page realisation */
 Route::get('/realisations',[RealisationController::class,'index'])->name('realisation.index');
 
-
+/** Groupe pour les routes avec besoins d'authentifications */
 Route::middleware('auth')->group(function () {
+    /** Routes profil utlisateur */
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

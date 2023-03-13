@@ -44,6 +44,7 @@ class User extends Authenticatable
     ];
     public function orders(): HasMany
     {
+        /** relations un utilisateur peut avoir plusieurs commandes */
         return $this->hasMany(Order::class);
     }
 }

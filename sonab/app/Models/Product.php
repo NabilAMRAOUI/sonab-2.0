@@ -14,7 +14,9 @@ class Product extends Model
 
     public function orders(): BelongsToMany
     {
+        /** le produit a plusieurs orders */
         return $this->belongsToMany(Order::class)
+        /** avec une table pivot  */
             ->withPivot('total_quantity', 'total_price');
     }
 
@@ -26,6 +28,7 @@ class Product extends Model
     // }
     public function getFormattedPriceAttribute() 
     {
+        /** formatter le prix */
         return str_replace('.',',', $this->price / 100) . '€';
     }
 }

@@ -13,6 +13,7 @@ class Order extends Model
 
     public function products(): BelongsToMany
     {
+        /** une commande a plusieurs produits */
         return $this->belongsToMany(Product::class)
             ->withPivot('total_quantity', 'total_price');
     }

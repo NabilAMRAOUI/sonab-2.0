@@ -17,6 +17,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
+            /** creation de données factices */
             'name' => $this->faker->sentence(),
             'description' => $this->faker->sentence(rand(1,3),true),
             'image' => $this->faker->imageUrl(),

@@ -10,7 +10,7 @@ const cartCount = ref(0);
 
         cartCount.value = response.data.cartCount;
     }
-
+    /** fonction d'ajout de produit */
     const add = async(productId) => {
         let response = await axios.post('/api/products', {
             productId: productId
@@ -18,7 +18,7 @@ const cartCount = ref(0);
 
         return response.data.count;
     }
-
+    /** pour renvoyer le count */
     const getCount = async() => {
         let response = await axios.get('/api/products/count');
         return response.data.count;

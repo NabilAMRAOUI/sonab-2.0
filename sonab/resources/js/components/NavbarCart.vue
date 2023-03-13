@@ -14,12 +14,15 @@
   import useProduct from "../composables/products";
   import emitter from 'tiny-emitter/instance';
   
+  /** on déclare la méthode getCount de notre api composition */
   const { getCount } = useProduct();
+  /** on déclare la méthode cartCount de notre api composition */
   const cartCount = ref(0); 
-  
+  /** on met en place ici un évenement pour mettre a jour dynamiquement les quantités du panier */
   emitter.on('cartCountUpdated', (count) => cartCount.value = count); 
    
   onMounted(async () => {
+    //* recupérer le count du panier */
     cartCount.value = await getCount();
   });
   

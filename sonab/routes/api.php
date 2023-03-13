@@ -20,10 +20,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     return $request->user();
     });
 
+
+    /** Routes pour les fonction + et - de mon panier */
     Route::get('products/increase/{id}', [CartController::class, 'increase']);
     Route::get('products/decrease/{id}', [CartController::class, 'decrease']);
-
+    /** Routes pour le count du panier */
     Route::get('products/count', [CartController::class, 'count'])
         ->name('products.count');
+    /** Routes pour le composant addtocart */    
     Route::apiResource('products', CartController::class);
 });

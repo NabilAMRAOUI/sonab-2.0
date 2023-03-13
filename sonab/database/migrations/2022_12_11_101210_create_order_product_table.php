@@ -12,6 +12,7 @@ return new class extends Migration
      * @return void
      */
     public function up()
+    /** table pivot  */
     {
         Schema::create('order_product', function (Blueprint $table) {
             $table->unsignedBigInteger('order_id');

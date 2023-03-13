@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
+     /** Creation de 10 utlisateurs avedc 3 commandes chacun et on crée 5 produits */
     {
         User::factory()
             ->count(10)

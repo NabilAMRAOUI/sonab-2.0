@@ -34,8 +34,11 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        /** recuperer l'id du produit  */
         $product = Product::where('id', $request->productId)->first();
+        /** nouvelle instace de cartrepository qui nous renvoi le count */
         $count = (new CartRepository())->add($product);
+        /** on retourne la reponse au format json en incluant le count */
         return response()->json([
             'count' => $count
         ]);
@@ -87,6 +90,7 @@ class CartController extends Controller
 
     public function count() 
     {
+        /** récuperer le count en faisant une nouvelle instance de cartrepository */
         $count = (new CartRepository())->count();
 
         return response()->json([

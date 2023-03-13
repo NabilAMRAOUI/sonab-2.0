@@ -8,6 +8,7 @@ class CartRepository
 {
     public function add (Product $product)
     {
+        /** fonction add de darryldecode  */
         \Cart::session(auth()->user()->id)->add(array(
             'id' => $product->id,
             'name' => $product->name,
@@ -22,12 +23,14 @@ class CartRepository
 
     public function content ()
     {
+        /** fonction content de darryldecode pour récupérer le contenu  */
         return \Cart::session(auth()->user()->id)
         ->getContent();
     }
 
     public function increase($id)
     {
+        /** Pour le bouton + du panier  */
         \Cart::session(auth()->user()->id)
         ->update($id, [
             'quantity' => +1
@@ -35,6 +38,7 @@ class CartRepository
     } 
     public function decrease($id)
     {
+        /** Pour le bouton -  du panier  */
         $item = \Cart::session(auth()->user()->id)->get($id);
 
         if ($item->quantity === 1) {
@@ -50,12 +54,14 @@ class CartRepository
 
     public function remove($id) 
     {
+        /** Pour suprimer du panier  */
         \Cart::session(auth()->user()->id)->remove($id);
     }
 
     public function total()
     {
-        \Cart::session(auth()->user()->id)->getTotal();
+        /** Pour total du panier  */
+       return \Cart::session(auth()->user()->id)->getTotal();
     }
 
     public function jsonOrderItems()
@@ -74,6 +80,7 @@ class CartRepository
 
     public function count ()
     {
+        /** fonction count de darryldecode pour récupérer le count  */
         return $this->content()
            ->sum('quantity');
     }

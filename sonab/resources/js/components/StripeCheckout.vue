@@ -21,11 +21,13 @@
     import useStripe from '../composables/stripe';
 
     const {
-        initialize
+        initialize,
+        checkStatus,
     } = useStripe();
 
     onMounted(async () => {
         await initialize();
+        await checkStatus();
     })
 </script>
 

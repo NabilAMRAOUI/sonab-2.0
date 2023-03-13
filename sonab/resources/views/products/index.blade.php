@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout> 
     <!-- component -->
     <div tabindex="0" class="focus:outline-none rounded-sm  ">
         <!-- Remove py-8 -->
@@ -6,7 +6,7 @@
             <div class="flex flex-row flex-wrap">
                 <!-- Card 1 -->
                 @foreach ($products as $product)
-
+                <!--on récupére ici a l'aide d'un foreach les données du produits -->
 
                 <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
                     <div>
@@ -29,7 +29,8 @@
                             </div>
                             <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{
                                 $product->description }}</p>
-
+                            <!--on apelle le composant AddtoCart et on lui passe en props l'id 
+                            du produit pour en récupérer son contenu -->
                             <add-to-cart :product-id="{{ $product->id }}" />
                         </div>
                     </div>

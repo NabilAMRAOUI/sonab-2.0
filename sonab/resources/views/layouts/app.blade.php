@@ -15,6 +15,7 @@
         <script src="https://js.stripe.com/v3/"></script>
         
     </head>
+    <!-- id app sur le body pour intégrer vue  -->
     <body class="font-sans antialiased" id="app" >
         <div class="min-h-screen bg-transparent">
             @include('layouts.navigation')
