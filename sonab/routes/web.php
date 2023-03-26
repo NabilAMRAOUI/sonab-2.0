@@ -2,12 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealisationController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\StripeCheckoutController;
+use App\Http\Controllers\SuccessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,10 @@ Route::get('/', function () {
 /** Routes nécessaires a stripe api */
 Route::get('/checkout',[StripeCheckoutController::class,'create']);
 Route::post('/paymentIntent',[StripeCheckoutController::class,'paymentIntent']);
+Route::get('/thankyou',[SuccessController::class,'create']);
+
+Route::post('/saveOrder', OrderController::class)
+->name('orders.save');
 
 /** Route pour le panier */
 Route::get('/shoppingCart',ShoppingCartController::class)

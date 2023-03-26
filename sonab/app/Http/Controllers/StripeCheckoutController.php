@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\CartRepository;
+use Illuminate\Http\Request;
 
 class StripeCheckoutController extends Controller
 {
-    public  function create() 
-    {
+    public function create()
+    { 
         return view('checkout.create');
     }
 
@@ -16,10 +16,10 @@ class StripeCheckoutController extends Controller
     {
         \Stripe\Stripe::setApiKey(config('stripe.test_secret_key'));
 
-        $cartTotal = (new CartRepository())->total();
-        
+        $customer = \Stripe\Customer::create();
+
         header('Content-Type: application/json');
-        
+
         try {
             // retrieve JSON from POST body
             $jsonStr = file_get_contents('php://input');
@@ -27,15 +27,15 @@ class StripeCheckoutController extends Controller
         
             // Create a PaymentIntent with amount and currency
             $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => $cartTotal,
+                'customer' => $customer->id,
+                'amount' => (new CartRepository())->total(),
                 'currency' => 'eur',
                 'automatic_payment_methods' => [
-                'enabled' => true,
+                    'enabled' => true,
                 ],
-                'metadata' => [
-                    'order_items' => (new CartRepository())->jsonOrderItems()
+                "metadata" => [
+                    "order_items" => (new CartRepository())->jsonOrderItems()
                 ]
-                
             ]);
         
             $output = [

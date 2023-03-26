@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="block h-9 w-auto fill-current text-black" />
                     </a>
                 </div>
                 
@@ -39,7 +39,7 @@
                 <navbar-cart></navbar-cart>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black bg-white hover:text-red-900 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()?->name }}</div>
                             <div class="hidden space-x-8  sm:-my-px sm:ml-10 sm:flex ">
                                 <!-- menu connexion en fonction des roles -->

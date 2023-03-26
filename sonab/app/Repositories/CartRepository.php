@@ -66,7 +66,7 @@ class CartRepository
 
     public function jsonOrderItems()
     {
-        $this
+        return $this
         ->content()
         ->map(function($item) {
             return [
@@ -83,6 +83,11 @@ class CartRepository
         /** fonction count de darryldecode pour récupérer le count  */
         return $this->content()
            ->sum('quantity');
+    }
+
+    public function clear()
+    {
+        \Cart::session(auth()->user()->id)->clear();
     }
 
 

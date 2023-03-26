@@ -20,12 +20,6 @@ class Product extends Model
             ->withPivot('total_quantity', 'total_price');
     }
 
-    // public function price(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn($value) => str_replace('.',',', $value / 100) . '€'
-    //     );
-    // }
     public function getFormattedPriceAttribute() 
     {
         /** formatter le prix */

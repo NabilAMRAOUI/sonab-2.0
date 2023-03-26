@@ -11,6 +11,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function products(): BelongsToMany
     {
         /** une commande a plusieurs produits */

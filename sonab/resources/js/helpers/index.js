@@ -6,7 +6,7 @@ export const priceFormat = (price) => {
 }
 
 export const registerOrder = async () => {
-    await axios.post('/orders')
+    await axios.post('/saveOrder')
         .then(r => console.log(r))
         .catch(e => console.log(e));
 }
