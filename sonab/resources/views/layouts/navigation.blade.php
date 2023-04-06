@@ -10,7 +10,8 @@
                     </a>
                 </div>
                 
-                <!-- Navigation Links -->
+            
+                     <!-- Liens de navigations classiques -->
                 <div class="hidden space-x-8  sm:-my-px sm:ml-10 sm:flex ">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Acceuil') }}
@@ -29,8 +30,13 @@
                     <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
                         {{ __('Contact') }}
                     </x-nav-link>
+                    <!-- Liens de navigations administrateur -->
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')" v-if="isAdmin= 'true'">
+                        {{ __('interface admin') }}
+                    </x-nav-link>
                     
                 </div>
+               
             </div>
             
             <!-- Settings Dropdown -->
@@ -46,10 +52,9 @@
                                 @if (Route::has('login'))
                                     
                                         @auth
-                                        {{-- <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                                            {{ __('Acceuil') }}
-                                        </x-nav-link> --}}
+
                                         @else
+
                                         <x-nav-link :href="route('login')" :active="request()->routeIs('Se connecter')">
                                             {{ __('Se connecter') }}
                                         </x-nav-link>
@@ -76,7 +81,7 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profil') }}
                         </x-dropdown-link>
-
+                        
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
