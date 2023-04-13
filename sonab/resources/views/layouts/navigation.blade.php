@@ -31,7 +31,7 @@
                         {{ __('Contact') }}
                     </x-nav-link>
                     <!-- Liens de navigations administrateur -->
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')" v-if="isAdmin= 'true'">
+                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')" v-if=" isAdmin = 'true' ">
                         {{ __('interface admin') }}
                     </x-nav-link>
                     
@@ -142,3 +142,12 @@
         </div>
     </div>
 </nav>
+
+<script>
+     mounted: function () {
+    this.navlink.afterEach(() => {
+      // this.isConnected = !!localStorage.getItem("token");
+      this.isConnected = Boolean(localStorage.getItem("token"));
+      this.isAdmin = String(localStorage.getItem("is_admin"));
+
+</script>
