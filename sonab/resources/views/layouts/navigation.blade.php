@@ -31,9 +31,7 @@
                         {{ __('Contact') }}
                     </x-nav-link>
                     <!-- Liens de navigations administrateur -->
-                    <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')" v-if=" isAdmin = 'true' ">
-                        {{ __('interface admin') }}
-                    </x-nav-link>
+                    
                     
                 </div>
                
